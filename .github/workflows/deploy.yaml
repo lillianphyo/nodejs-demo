@@ -84,7 +84,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: AWS SSM Send-Command
-        uses: peterkimzz/aws-ssm-send-command@main
+        uses: ./
         id: ssm
         with:
           aws-region: ${{ env.AWS_REGION }}
