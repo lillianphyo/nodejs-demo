@@ -78,27 +78,7 @@ jobs:
               echo "runing the docker image"
               echo "Testing the nodejs  app endpoints"
               echo ${{ steps.docker_build.outputs.digest }}
-  deploy:
-    need: [build_test]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - name: AWS SSM Send-Command
-        uses: ./
-        id: ssm
-        with:
-          aws-region: ${{ env.AWS_REGION }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }} 
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          instance-ids: ${{ secrets.INSTANCE_ID }}
-
-          working-directory: /home/ubuntu/application
-          command: docker pull ${{ secret.DOCKERHUB_USERNAME }}/nodejs-demo:latest && docker run --detach --name nodejs-demo -p 8081:8080 ${{ secrets.DOCKERHUB_USERNAME }}/nodejs-demo
-          comment: Hello world!
-
-      # Catch SSM outputs
-      - name: Get the outputs
-        run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
+  
   
    
       
