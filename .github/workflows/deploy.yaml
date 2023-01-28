@@ -97,7 +97,7 @@ jobs:
             instance-ids: ${{ env.instance_ids }}
 
             working-directory: /home/ubuntu/application
-            command: ls -al
+            command: echo "Hello world!" > /tmp/hello.txt
             comment: echo "Hello world!" > /tmp/hello.txt
         
         # Catch SSM outputs
