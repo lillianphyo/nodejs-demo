@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 env:
         REPO: nodejs-demo
-        AWS_REGION: ap-south-1  
+        AWS_REGION: ap-southeast-1  
         instance_ids: |
            i-06968034026e321e4
            i-06d7b8cb3c2147657
@@ -84,19 +84,25 @@ jobs:
   deploy:
       needs: [build_test]
       runs-on: ubuntu-latest
-      environment: Dev
-      permissions:
-         id-token: write
-         contents: read
       steps:
         - uses: actions/checkout@v2
-        - uses: aws-actions/configure-aws-credentials@v1
+         
+        - name: AWS SSM Send-Command
+          uses: peterkimzz/aws-ssm-send-command@master
+          id: ssm
           with:
-            role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
-            role-session-name: GitHub-Action-Role
             aws-region: ${{ env.AWS_REGION }}
-        - run: |
-            echo "Hello world!" > /tmp/hello.txt
+            aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            instance-ids: ${{ env.instance_ids }}
+
+            working-directory: /home/ubuntu/application
+            command: ls -al
+            comment: echo "Hello world!" > /tmp/hello.txt
+        
+        # Catch SSM outputs
+        - name: Get the outputs
+          run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
        
   
    
