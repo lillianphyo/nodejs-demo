@@ -96,9 +96,9 @@ jobs:
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
             instance-ids: ${{ env.instance_ids }}
 
-            working-directory: /home/ubuntu/application
-            command: echo "Hello world!" > /tmp/hello.txt
-            comment: echo "Hello world!" > /tmp/hello.txt
+            working-directory: /tmp
+            command: touch hello.txt
+            comment: hello
         
         # Catch SSM outputs
         - name: Get the outputs
