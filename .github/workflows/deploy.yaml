@@ -82,7 +82,7 @@ jobs:
               echo "Testing the nodejs  app endpoints"
               echo ${{ steps.docker_build.outputs.digest }}
   deploy:
-      needs: [build_test]
+      needs: [push_to_Docker_Hub]
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
