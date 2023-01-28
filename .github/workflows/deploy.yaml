@@ -14,8 +14,8 @@ env:
         REPO: nodejs-demo
         AWS_REGION: ap-southeast-1  
         instance_ids: |
-           i-06968034026e321e4
-           i-06d7b8cb3c2147657
+           i-0b74b27c04b52197b
+           i-011d84c1e4eff7d8d
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains multiple jobs
