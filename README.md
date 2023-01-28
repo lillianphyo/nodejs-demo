@@ -1,3 +1,3 @@
 # nodejs-demo
 
-https://lillianphyo.net/CI-CDforsamplenodejsapplication
+https://lillianphyo.net/ci-cdforsamplenodejsapplication
