@@ -1,3 +1,2 @@
 # nodejs-demo
-
-https://lillianphyo.net/ci-cdforsamplenodejsapplication
+https://www.lillianphyo.net/posts/github-cid-with-AWSCloudFormation-and-AWSSM/
