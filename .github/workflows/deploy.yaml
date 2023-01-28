@@ -97,8 +97,8 @@ jobs:
             instance-ids: ${{ env.instance_ids }}
 
             working-directory: /tmp
-            command: touch hello.txt
-            comment: hello
+            command: docker pull 270596/nodejs-demo && docker run -d -p 8080:8080 --name nodejs-demo 270596/nodejs-demo
+            comment: run application
         
         # Catch SSM outputs
         - name: Get the outputs
