@@ -13,6 +13,9 @@ on:
 env:
         REPO: nodejs-demo
         AWS_REGION: ap-south-1  
+        instance_ids: |
+           i-06968034026e321e4
+           i-06d7b8cb3c2147657
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains multiple jobs
@@ -91,11 +94,11 @@ jobs:
             aws-region: ${{ env.AWS_REGION }}
             aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            instance-ids: ${{ secrets.INSTANCE_ID }}
+            instance-ids: ${{ env.instance_ids }}
 
             working-directory: /home/ubuntu/application
             command: ls -al
-            comment: Hello world!
+            comment: echo "Hello world!" > /tmp/hello.txt
         
         # Catch SSM outputs
         - name: Get the outputs
