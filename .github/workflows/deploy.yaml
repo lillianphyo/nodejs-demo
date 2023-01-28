@@ -79,7 +79,7 @@ jobs:
               echo "Testing the nodejs  app endpoints"
               echo ${{ steps.docker_build.outputs.digest }}
   deploy:
-    needs: [build-test]
+    needs: [build_test]
     runs-on: ubuntu-latest
     environment: Dev
     permissions:
